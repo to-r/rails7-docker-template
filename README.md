@@ -33,15 +33,7 @@ RUN gem install bundler -v $BUNDLER_VERSION
 RUN bundle _$BUNDLER_VERSION\_ install -j4
 ```
 
-### 3. docker-compose.yml の更新
-
-コメントアウトしている箇所のコメントを外します。
-
-```yml
-command: bash -c "rm -f tmp/pids/server.pid && rails s"
-```
-
-### 4. ビルドの実行
+### 3. ビルドの実行
 
 ビルドを実行し、gem をインストールします。
 
@@ -49,7 +41,7 @@ command: bash -c "rm -f tmp/pids/server.pid && rails s"
 docker compose build
 ```
 
-### 5. データベースの設定変更
+### 4. データベースの設定変更
 
 `config/database.yml` の default を以下に変更します。
 
@@ -63,7 +55,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 ```
 
-### 6. Rails サーバーの起動
+### 5. Rails サーバーの起動
 
 ```sh
 docker compose up -d
