@@ -1,0 +1,31 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres
+    container_name: myapp_db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+  web:
+    build:
+      context: .
+    # command: bash -c "rm -f tmp/pids/server.pid && rails s"
+    container_name: myapp_web
+    depends_on:
+      - db
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+      - "1234:1234"
+      - "3035:3035"
+    environment:
+      PORT: 3000
+      BINDING: 0.0.0.0
+      TZ: 'Asia/Tokyo'
+    stdin_open: true
+    tty: true
