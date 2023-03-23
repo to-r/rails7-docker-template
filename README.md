@@ -14,7 +14,7 @@
 以下のコマンドを実行し、Rails アプリケーションを作成します。
 
 ```sh
-docker compose run --no-deps web rails new . --force --database=postgresql
+docker-compose run --no-deps web rails new . --force --database=postgresql
 ```
 
 ### 2. Dockerfile の更新
@@ -38,7 +38,7 @@ RUN bundle _$BUNDLER_VERSION\_ install -j4
 ビルドを実行し、gem をインストールします。
 
 ```sh
-docker compose build
+docker-compose build
 ```
 
 ### 4. データベースの設定変更
@@ -58,7 +58,7 @@ default: &default
 ### 5. Rails サーバーの起動
 
 ```sh
-docker compose up -d
+docker-compose up -d
 ```
 
 `http://localhost:3000` にアクセスします。画面に表示されるデータベース作成ボタンをクリックしてデータベースを作成してください。
