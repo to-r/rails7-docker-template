@@ -32,7 +32,7 @@ RUN set -ex && \
     : "Cleaning..." && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    : "Install rails6.X latest version" && \
+    : "Install rails7.X latest version" && \
     gem install rails --version="~>7.0.0"
 
 # COPY Gemfile /myapp
